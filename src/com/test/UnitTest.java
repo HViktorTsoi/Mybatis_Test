@@ -40,9 +40,9 @@ public class UnitTest {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 		List<User> userlist = userMapper.findUserList(new User());
-//		for (User m : userlist) {
-//			System.out.println(m);
-//		}
+		for (User m : userlist) {
+			System.out.println(m);
+		}
 	}
 
 //	 @Test

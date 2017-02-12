@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="findUserById" parameterType="int" resultType="com.pojo.User">SELECT
 		* FROM T_USER WHERE id =#{value}</select>
-	<select id="findUserList" parameterType="com.pojo.User" resultType="java.util.Map">SELECT id,username,birthday,address FROM T_USER</select>
+	<select id="findUserList" parameterType="com.pojo.User" resultType="com.pojo.User">SELECT id,username,birthday,address FROM T_USER</select>
 	<select id="findUserCount" parameterType="com.pojo.User"
 		resultType="int">
 		SELECT COUNT(*) FROM T_USER
