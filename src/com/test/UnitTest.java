@@ -2,7 +2,6 @@ package com.test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ public class UnitTest {
 		sqlSession.close();
 	}
 
-	// @Test
+	 @Test
 	public void findUserListTest() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -46,16 +45,18 @@ public class UnitTest {
 		}
 	}
 
-	// @Test
+	 @Test
 	public void findUserInList() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 		Object[] ids = { 6, 7 };
 		List<User> userlist = userMapper.findUserInList(ids);
-		System.out.println(userlist);
+		for(User user:userlist){
+			System.out.println(user);
+		}
 	}
 
-	// @Test
+	 @Test
 	public void updateUserTest() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -66,7 +67,7 @@ public class UnitTest {
 		sqlSession.commit();
 	}
 
-	@Test
+//	@Test
 	public void insertTest() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -78,7 +79,7 @@ public class UnitTest {
 		sqlSession.commit();
 		sqlSession.close();
 	}
-	@Test
+//	@Test
 	public void getRandom(){
 		System.out.println(new Random().nextInt());
 	}
