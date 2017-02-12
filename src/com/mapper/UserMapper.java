@@ -7,7 +7,7 @@ import com.pojo.User;
 public interface UserMapper {
 	public User findUserById(int id) throws Exception;
 
-	public List<Map<String, Object>> findUserList(User user) throws Exception;
+	public List<User> findUserList(User user) throws Exception;
 
 	public int findUserCount(User user) throws Exception;
 
