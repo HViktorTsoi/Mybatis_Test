@@ -39,13 +39,13 @@ public class UnitTest {
 	public void findUserListTest() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-		List<Map<String, Object>> userlist = userMapper.findUserList(new User());
-		for (Map<String, Object> m : userlist) {
+		List<User> userlist = userMapper.findUserList(new User());
+		for (User m : userlist) {
 			System.out.println(m);
 		}
 	}
 
-	 @Test
+//	 @Test
 	public void findUserInList() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -56,7 +56,7 @@ public class UnitTest {
 		}
 	}
 
-	 @Test
+//	 @Test
 	public void updateUserTest() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
