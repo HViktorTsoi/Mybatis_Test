@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+	
+	<sql id="query_user_where">
+		<if test="id!=0">and id=#{i}</if>
+		<if test="username!=null and username!=''">and username=#{username}</if>
+		<if test="birthday!=null and birthday!=''">and birthday=#{birthday}</if>
+		<if test="address!=null and address!=''">and address=#{address}</if>
+	</sql>
+	
+	<select id="findUserById" parameterType="int" resultType="com.pojo.User">SELECT
+		* FROM T_USER WHERE id =#{value}</select>
+	<select id="findUserList" parameterType="com.pojo.User" resultType="java.util.Map">SELECT id,username,birthday,address FROM T_USER</select>
+	<select id="findUserCount" parameterType="com.pojo.User"
+		resultType="int">
+		SELECT COUNT(*) FROM T_USER
+		<where>
+			<include refid="query_user_where"/>
+		</where>
+	</select>
+	<select id="findUserInList" resultType="com.pojo.User">
+		SELECT * FROM T_USER WHERE id IN
+		<foreach collection="array" item="item" open="(" close=")"
+			separator=",">#{item}</foreach>
+	</select>
+	<update id="updateUser" parameterType="com.pojo.User">
+		UPDATE T_USER
+		<set>
+			<if test="username!=null and username!=''">username=#{username},</if>
+			<if test="birthday!=null and birthday!=''">birthday=#{birthday},</if>
+			<if test="address!=null and address!=''">address=#{address}</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	<insert id="insertUser" parameterType="com.pojo.User">
+		INSERT INTO T_USER (username,birthday,address) VALUES(#{username},#{birthday},#{address})
+	</insert>
+</mapper>
